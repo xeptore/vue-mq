@@ -1,47 +1,5 @@
-import json2mq from 'json2mq';
+import 'json2mq';
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _toConsumableArray(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
-}
-
-function convertBreakpointsToMediaQueries(breakpoints) {
-  var keys = Object.keys(breakpoints);
-  var values = keys.map(function (key) {
-    return breakpoints[key];
-  });
-  var breakpointValues = [0].concat(_toConsumableArray(values.slice(0, -1)));
-  var mediaQueries = breakpointValues.reduce(function (sum, value, index) {
-    var options = Object.assign({
-      minWidth: value
-    }, index < keys.length - 1 ? {
-      maxWidth: breakpointValues[index + 1] - 1
-    } : {});
-    var mediaQuery = json2mq(options);
-    return Object.assign(sum, _defineProperty({}, keys[index], mediaQuery));
-  }, {});
-  return mediaQueries;
-}
 function transformValuesFromBreakpoints(breakpoints, values, currentBreakpoint) {
   var findClosestValue = function findClosestValue(currentBreakpoint) {
     if (values[currentBreakpoint] !== undefined) return values[currentBreakpoint];
@@ -79,8 +37,6 @@ function isArray(arg) {
 }
 
 // USAGE
-// mq-layout(mq="lg")
-//   p I’m lg
 var component = {
   props: {
     mq: {
@@ -140,7 +96,7 @@ var install = function install(Vue) {
     },
     mounted: function mounted() {
       if (!hasSetupListeners) {
-        var mediaQueries = convertBreakpointsToMediaQueries(breakpoints); // setup listeners
+        var mediaQueries = breakpoints; // setup listeners
 
         var _loop = function _loop(key) {
           var mediaQuery = mediaQueries[key];
