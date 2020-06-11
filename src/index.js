@@ -1,4 +1,4 @@
-import { subscribeToMediaQuery, convertBreakpointsToMediaQueries, transformValuesFromBreakpoints } from './helpers.js'
+import { subscribeToMediaQuery, transformValuesFromBreakpoints } from './helpers.js'
 import MqLayout from './component.js'
 
 const DEFAULT_BREAKPOINT = {
@@ -29,7 +29,7 @@ const install = function (Vue, { breakpoints = DEFAULT_BREAKPOINT, defaultBreakp
     },
     mounted() {
       if (!hasSetupListeners) {
-        const mediaQueries = convertBreakpointsToMediaQueries(breakpoints)
+        const mediaQueries = breakpoints
         // setup listeners
         for (const key in mediaQueries) {
           const mediaQuery = mediaQueries[key]
