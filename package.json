@@ -1,5 +1,5 @@
 {
-  "name": "vue-mq",
+  "name": "@xeptore/vue-mq",
   "version": "1.0.1",
   "description": "Handle media queries easily & build responsive design with Vue",
   "main": "dist/vue-mq.js",
@@ -31,10 +31,10 @@
     },
     "publicPath": "/vue-mq/"
   },
-  "author": "Alexandre Geissmann <alex@la-bonaventure.com>",
+  "author": "Morteza Behboodian <xeptore@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AlexandreBonaventure/vue-mq"
+    "url": "https://github.com/xeptore/vue-mq"
   },
   "license": "MIT",
   "dependencies": {
